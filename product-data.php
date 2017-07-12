@@ -32,8 +32,9 @@ $columns = array(
 
 // getting total number records without any search
 $query = "SELECT DISTINCT list_name, list_price, list_upc FROM products";
-$totalData = $pdo->query($query);
-$totalData->setFetchMode(PDO::FETCH_CLASS, 'Products');
+$result = $pdo->query($query);
+$result->setFetchMode(PDO::FETCH_CLASS, 'Products');
+$totalData = $result->rowCount();
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
 
@@ -58,7 +59,7 @@ if( !empty($requestData['search']['value']) ) {
 }
 
 $data = array();
-while($row = $totalData->fetch()) {  // preparing an array
+while($row = $result->fetch()) {  // preparing an array
 	$nestedData=array();
 
 	$nestedData[] = $row['list_name'];
