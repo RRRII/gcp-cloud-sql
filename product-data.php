@@ -23,12 +23,12 @@ class Products {
     }
 }
 
-// $columns = array(
-// // datatable column index  => database column name
-// 	0 => 'list_name',
-// 	1 => 'list_price',
-// 	2 => 'list_upc'
-// );
+$columns = array(
+// datatable column index  => database column name
+	0 => 'list_name',
+	1 => 'list_price',
+	2 => 'list_upc'
+);
 
 // getting total number records without any search
 $query = "SELECT DISTINCT list_name, list_price, list_upc FROM products";
